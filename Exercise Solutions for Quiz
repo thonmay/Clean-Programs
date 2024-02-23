@@ -1,0 +1,258 @@
+module PracticeClean
+import StdEnv
+
+//writing a Function
+
+/*
+1.Function for absolute value of an integer number.
+myAbs :: Int -> Int
+myAbs x = abs x
+
+Start = myAbs -150
+
+*/
+
+/*
+2. Function for Maximum of two integers
+maxi :: Int Int -> Int
+
+maxi x y 
+|(x > y) = x
+| otherwise = y
+
+Start = maxi 41 8
+
+*/
+
+/*
+3. Function for adding 100 to an Integer
+add100 :: Int -> Int
+add100 x = x + 100
+
+Start = add100 40
+*/
+
+/*
+//4. Checking is num is Even or Odd
+
+isEven :: Int -> Bool
+
+isEven x
+| (x rem 2) == 0 = True
+|otherwise = False
+
+Start = isEven 50
+
+
+isOdd :: Int -> Bool
+isOdd x 
+|(x rem 2)== 1 =True
+|otherwise = False
+
+Start = isOdd 50
+*/
+
+/*
+//LowerCase to Uppercase
+lowerToUpper :: Char -> Char
+lowerToUpper c 
+| (isLower c) = toUpper c
+|otherwise = c
+
+Start = lowerToUpper 'a'
+*/
+
+/*
+upperToLower :: Char -> Char
+upperToLower c 
+| (isUpper c) = toLower c
+| otherwise = c
+
+Start = upperToLower 'F'
+*/
+ 
+
+/*
+// 19. Checking Rem of 3 Integers
+// Check if both a and b have the same remainder when divided by c.
+sameRem :: Int Int Int -> Bool
+
+sameRem a b c 
+| ( a rem c ) == ( b rem c ) = True
+| otherwise = False
+
+Start = sameRem 13 4 4 
+*/
+
+
+/*
+Check if the first integer is even, the second divisible by 13 
+ and the boolean value is True
+
+check :: Int Int Bool -> Bool
+check x y b
+
+|( x rem 2 ) == 0 && ( y rem 13) == 0 && (b == True) = True
+| otherwise = False
+
+
+Start = check 4 26 False
+*/
+
+
+/*
+21. Check if a number is the sum of two other given numbers in any order.
+(a == b + c) any order
+
+isSum :: Int Int Int -> Bool
+isSum x y z 
+
+| ( x == y + z ) = True
+| ( y == x + z) = True
+| ( z == x + y) = True
+| otherwise = False
+
+Start = isSum 4 12 8
+*/
+
+/* 1.
+Write GetLastPositive function which returns 
+the number decreased by the last digit of the 
+number if its positive and -1 if the number is negative.
+
+
+getLastPositive :: Int -> Int
+getLastPositive x 
+|( x > 0) = x - ( x rem 10) 
+| otherwise = -1
+
+Start = getLastPositive -544
+
+*/
+
+/* 2.
+Given two real numbers decide whether the number obtained by the
+sum of the two numbers has the digit after the decimal point
+Even or not, assume there is only one number after the decimal point.  
+Hint: you can use (toInt) function.  
+
+
+isEvenDecimal :: Real Real -> Bool
+isEvenDecimal x y
+
+| toInt(x + y * 10.0) rem 2 == 0 = True
+| otherwise = False
+
+Start = isEvenDecimal 4.6 5.5
+*/
+
+/* 3.  
+Write a function that will take a digit less or equal to 5 (Int)
+and return the respective word for it (as a String).
+For example: input of 1 should output One; 
+input of 0 should output Zero; 
+input of 5 should output Five.
+Anything that is not the digit (0-5) should output "Not less or equal to 5"
+
+
+digitToString :: Int -> String
+digitToString x
+| x == 0 = "Zero"
+| x == 1 = "One"
+| x == 2 = "Two"
+| x == 3 = "Three"
+| x == 4 = "Four"
+| x == 5 = "Five"
+| otherwise = "Not less or equal to 5"
+
+Start = digitToString 6
+*/
+
+
+/* 4. 
+Change a character if is small letter to uppercase and vice versa,
+if is a special sign, leave as it is.
+
+ch :: Char -> Char
+ch c
+| isLower c = toUpper c
+| isUpper c = toLower c
+| otherwise = c
+
+Start = ch 'T'
+
+*/
+
+/*5.
+Is a number perfect square?
+16 is the square of 4, so is perfect square.
+
+
+isPerfectSquare :: Int -> Bool
+isPerfectSquare x 
+| sqrt(x) ==  
+
+*/ 
+ 
+/* 6.
+Compute the average of 5 numbers!
+ 
+
+avgFive :: Int Int Int Int Int -> Real
+avgFive a b c d e = toReal( a + b + c + d + e) / 5.0
+
+Start = avgFive 3 5 7 9 10
+*/
+
+/* 7.
+Given an integer, find the sum of the square of 
+each number between 1 and that given number.
+if the given integer is 5, then 5^2+4^2+3^2+2^2+1^2 = 55
+hint: https://www.cuemath.com/algebra/sum-of-squares/
+*/
+
+squareSum :: Int -> Int
+squareSum x 
+| (x == 1) = 1
+| otherwise = (x * x) + squareSum(x -1)
+
+Start = squareSum 5
+
+
+
+
+
+
+
+
+
+/* 8.
+Given 5 numbers, determine if the numbers 
+are in sorted order (in increased order).
+
+
+isSorted :: Int Int Int Int Int -> Bool
+isSorted a b c d e
+| ( a < b &&   b < c && c < d && d < e) = True
+| otherwise = False
+
+Start = isSorted 2 4 5 6 1
+
+*/
+
+
+/* 9.
+Given two numbers, if both numbers are odd return their product,
+if both numbers are even return their sum,
+if one is even the other odd, return 0.
+
+
+oddEven :: Int Int -> Int
+oddEven x y
+| (x rem 2 == 1 && y rem 2 == 1) = x * y
+| (x rem 2 == 0 && y rem 2 == 0) = x + y
+| otherwise = 0
+
+Start = oddEven 7 7
+
+*/ 
