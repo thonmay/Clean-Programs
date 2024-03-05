@@ -1,0 +1,199 @@
+module lab04ClassWork
+import StdEnv
+
+/*
+	1. Cut a list in two parts at the middle. 
+	E.g. cut [1..10] -> [[1,2,3,4,5],[6,7,8,9,10]]
+	and for cut [1..11] the result is [[1,2,3,4,5],[6,7,8,9,10,11]].
+*/
+
+cut :: [Int] -> [[Int]]
+cut [x : xs] 
+| length [x : xs] rem 2 == 0 = take (length [x:xs] / 2) [[x:xs]] ++ drop (length [x:xs] / 2) [[x:xs]]
+
+
+Start = cut [1..10] // [[1,2,3,4,5],[6,7,8,9,10]]
+//Start = cut [1..11] // [[1,2,3,4,5],[6,7,8,9,10,11]]
+//Start = cut [] // [[],[]]
+//Start = cut [1] // [[],[1]]
+
+/*
+	2. write a function that keeps the integers of a list up to the first 0 encounterred 
+	and then divides by 2 every element.
+	Eg. [1, 2, -2, 3, 0, -4] -> [0, 1, -1, 1]
+	hints: use takeWhile then map
+*/
+
+untilZero :: [Int] -> [Int]
+untilZero [] = []
+untilZero [x : xs] 
+| x == 0 = []
+| otherwise = [x / 2] ++ untilZero xs
+
+
+//Start = untilZero [1, 2, -2, 3, 0, -4] // [0, 1, -1, 1]
+
+/*
+	3. write a function for the square of every element of a list and sublists
+	[[1,2],[3,4,5,6],[7,8]]  -> [[1,4],[9,16,25,36],[49,64]]  
+	hint: map in map
+*/
+sqList :: [Int] -> [Int]
+sqList [] = []
+sqList [x : xs] = [x ^ 2] ++ sqList xs 
+
+//Start = sqList [1..5] // [1,4,9,16,25]
+
+sublistSq :: [[Int]] -> [[Int]]
+//subListSq [] = []
+//subListSq [[x : xs]] = 
+
+//Start = sublistSq [[1,2],[3,4,5,6],[7,8]] // [[1,4],[9,16,25,36],[49,64]]
+
+/*
+	4. Keep the first 2 and the last 2 elements of a list
+*/
+
+droptake2 :: [Int] -> [Int]
+droptake2 [] = []
+droptake2 [x : xs] 
+| take 2 [x : xs] ++ drop ( length [x : xs] 
+
+//Start = droptake2 [1, 2, 3, 4, 5, 6, 7, 8, 9] // [1,2,8,9]
+//Start = droptake2 [1, 2] // []
+
+/*
+	5. Delete the first and the last element of a list.
+*/
+
+//del_firstlast :: [Int] -> [Int]
+
+//Start = del_firstlast [1..10] // [2,3,4,5,6,7,8,9]
+//Start = del_firstlast [] // []
+//Start = del_firstlast [1] // []
+
+/*
+	6. Rewrite flatten with ++
+	 lc [[1, 2, 3], [3, 4], [5, 7, 8, 9]]
+	      x         xs
+	 [1, 2, 3] ++ lc [[3, 4], [5, 7, 8, 9]]
+	 [1, 2, 3] ++ [3, 4] ++ lc [[5, 7, 8, 9]]
+	 [1, 2, 3] ++ [3, 4] ++ [5, 7, 8, 9] ++ lc [] 
+	 [1, 2, 3] ++ [3, 4] ++ [5, 7, 8, 9] ++ [] 
+	 [1, 2, 3, 3, 4, 5, 7, 8, 9]
+*/
+
+//lc :: [[Int]] -> [Int]
+
+//Start = flatten [[1, 2, 3], [3, 4], [5, 7, 8, 9]] // [1,2,3,3,4,5,7,8,9]
+//Start = lc [[1, 2, 3], [3, 4], [5, 7, 8, 9]] // [1,2,3,3,4,5,7,8,9]
+
+
+/*
+	7. Keep the head of every sublist 
+	e.g. [[1, 2, 3], [3, 4], [5, 7, 8, 9]] -> [1, 3, 5]
+	
+	 heads [[1, 2, 3], [3, 4], [5, 7, 8, 9]]
+	         x          xs
+	 [1 : heads [[3, 4], [5, 7, 8, 9]]]
+	 [1 : [3 : heads [[5, 7, 8, 9]]]]
+	 [1 : [3 : [5 : heads []]]]
+	 [1 : [3 : [5 : []]]]
+	 [1,3,5]
+
+*/
+//heads :: [[Int]] -> [Int]
+
+//Start = heads [[14, 2, 3], [38, 4], [52, 7, 8, 9]] // [14,38,52]
+
+/*
+	8. Keep the tails of every sublist eg.
+	e.g. [[1, 2, 3], [3, 4], [5, 7, 8, 9]] -> [[2, 3], [4], [7, 8, 9]] 
+*/
+
+//tails :: [[Int]] -> [[Int]]
+
+//Start = tails [[1, 2, 3], [3, 4], [5, 7, 8, 9]] // [[2,3],[4],[7,8,9]]
+
+//tailsd :: [[Int]] -> [[Int]]
+
+//Start = tailsd [[1, 2, 3], [3, 4], [5, 7, 8, 9]] // [[2,3],[4],[7,8,9]]
+
+/*
+	9. Keep the last elements of the sublists of a list in one list (the sublists are not empty).
+	[[1,2,3],[5,6],[1],[7,8,9,10]] -> [3,6,1,10]
+*/
+
+//lasts :: [[Int]] -> [Int]
+
+//Start = lasts [[1,2,3],[5,6],[1],[7,8,9,10]] // [3,6,1,10]
+
+/*
+	10. Insert 0 in front of every sublist of a list.
+	eg. for [[1,2,3],[5,6],[],[7,8,9,10]] -> [[0,1,2,3],[0,5,6],[0],[0,7,8,9,10]]
+*/
+
+//ins0 :: [[Int]] -> [[Int]]
+
+//Start = ins0 [[1,2,3],[5,6],[],[7,8,9,10]] // [[0,1,2,3],[0,5,6],[0],[0,7,8,9,10]]
+
+//ins02 :: [[Int]] -> [[Int]]
+
+//Start = ins02 [[1,2,3],[5,6],[],[7,8,9,10]] // [[0,1,2,3],[0,5,6],[0],[0,7,8,9,10]]
+
+/*
+	11. Delete the last element of each sublist of a list.
+	E.g. for [[1,2,3],[5,6],[],[7,8,9,10]] the result is [[1,2],[5],[],[7,8,9]]
+*/
+//lastdel :: [[Int]] -> [[Int]]
+
+//Start = lastdel [[1,2,3],[5,6],[],[7,8,9,10]] // [[1,2],[5],[],[7,8,9]]
+
+/*
+	12. write a funtion with the patterns depending on the parameter:
+	if the param is [] then is equal to 20, 
+	if is a two element list starting with 4 then is 30
+	if is a two element list ending with 5 then is 40, 
+	in all other cases is 50, 
+	the order of the patterns is important
+*/
+//gp :: [Int] -> Int
+
+//Start = gp [4, 6] // 30
+//Start = gp [4, 5] // 30
+//Start = gp [1..10] // 50
+
+
+/*
+	13. check if a number is palindrom e.g.12321
+	digits 12321 []
+	digits 1232 [1:[]]
+	digits 123 [2:[1:[]]]
+	digits 12 [3:[2:[1:[]]]]
+	digits 1  [2:[3:[2:[1:[]]]]]
+	digits 0  [1:[2:[3:[2:[1:[]]]]]]
+	digits 0 [1,2,3,2,1]
+	[1,2,3,2,1]
+*/
+
+//pali :: Int -> Bool
+
+//Start = pali 12321 // True
+//Start = pali 12345 // False
+
+/*
+	14. filter the elements smaller than n, 
+	e.g. n=3 [1,5,3,2,1,6,4,3,2,1] -> [1,2,1,2,1]
+*/
+//filterN :: Int [Int] -> [Int]
+
+//Start = filterN 3 [1,5,3,2,1,6,4,3,2,1] // [1,2,1,2,1]
+
+/*
+	15. using notempty eliminate the empty lists: 
+	[[1,2,3],[],[3,4,5],[2,2],[],[],[]] -> [[1,2,3], [3,4,5], [2,2]]
+*/
+
+//elimEmpty :: [[Int]] -> [[Int]]
+
+//Start = elimEmpty [[1,2,3],[],[3,4,5],[2,2],[],[],[]] // [[1,2,3],[3,4,5],[2,2]]
